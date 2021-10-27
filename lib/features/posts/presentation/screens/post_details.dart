@@ -6,6 +6,38 @@ class PostDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text('Post Details'));
+    final PostModel post =
+        ModalRoute.of(context)!.settings.arguments as PostModel;
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text('Post Details'),
+        ),
+        body: SafeArea(
+          child: ListView(
+            padding: const EdgeInsets.fromLTRB(12, 10, 12, 40),
+            children: <Widget>[
+              Text(
+                post.title,
+                style: Theme.of(context).textTheme.headline4!.copyWith(
+                      color: const Color.fromRGBO(0, 0, 0, 0.7),
+                      fontWeight: FontWeight.bold,
+                    ),
+              ),
+              const SizedBox(height: 10),
+              Text(
+                'by: ${post.userId}',
+                style: Theme.of(context).textTheme.caption,
+              ),
+              const SizedBox(height: 10),
+              Text(
+                post.body,
+                softWrap: true,
+                style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                      fontSize: 20,
+                    ),
+              ),
+            ],
+          ),
+        ));
   }
 }
