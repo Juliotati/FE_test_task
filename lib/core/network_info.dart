@@ -15,15 +15,14 @@ class NetWorkInfoImpl implements NetworkInfo {
   Future<bool> get isConnected => _isConnected();
 
   Future<void> noConnectionWarning(BuildContext context) async {
-    if (await _hasNoNetwork()) {
-      ScaffoldMessenger.of(context).hideCurrentSnackBar();
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Oops you seem to be offline'),
-        ),
-      );
-      return;
-    }
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: const Text('Oops you seem to be offline'),
+        backgroundColor: Colors.red[400],
+      ),
+    );
+    return;
   }
 
   Future<bool> _isConnected() async {
