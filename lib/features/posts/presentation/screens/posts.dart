@@ -33,9 +33,9 @@ class _PostsState extends State<Posts> {
         actions: [
           InkWell(
             onTap: () async => getPosts(),
-            child:const Padding(
-              padding:  EdgeInsets.all(16.0),
-              child:  Icon(Icons.refresh),
+            child: const Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Icon(Icons.refresh),
             ),
           ),
         ],
@@ -44,13 +44,16 @@ class _PostsState extends State<Posts> {
         onRefresh: () async => getPosts(),
         child: PostBuilder(
           builder: (List<PostModel>? posts) {
-            return ListView.builder(itemBuilder: (_, int i) {
-              final PostModel post = posts![i];
-              return PostCard(
-                key: ValueKey<int>(post.id),
-                post: post,
-              );
-            });
+            return ListView.builder(
+              itemCount: posts!.length,
+              itemBuilder: (_, int i) {
+                final PostModel post = posts[i];
+                return PostCard(
+                  key: ValueKey<int>(post.id),
+                  post: post,
+                );
+              },
+            );
           },
         ),
       ),
