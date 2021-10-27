@@ -9,8 +9,10 @@ class PostDetails extends StatelessWidget {
     final PostModel post =
         ModalRoute.of(context)!.settings.arguments as PostModel;
     return Scaffold(
+      backgroundColor: post.id.isEven ? Colors.blue[50] : Colors.green[50],
         appBar: AppBar(
           title: const Text('Post Details'),
+          backgroundColor: post.id.isEven ? Colors.blue[200] : Colors.green[200],
         ),
         body: SafeArea(
           child: ListView(

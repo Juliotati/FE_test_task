@@ -28,6 +28,7 @@ class _PostsState extends State<Posts> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.grey[300],
         title: const Text('Posts'),
         actions: [
           InkWell(
