@@ -1,9 +1,7 @@
-import 'package:fe_test_task/core/network_info.dart';
-import 'package:fe_test_task/features/posts/data/datasources/remote_datasource.dart';
+import 'package:fe_test_task/core/core.dart';
 import 'package:fe_test_task/features/posts/posts.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:provider/single_child_widget.dart';
 
 class FETestApp extends StatelessWidget {
   const FETestApp({Key? key}) : super(key: key);
@@ -11,19 +9,10 @@ class FETestApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: <SingleChildWidget>[
-        ListenableProvider<PostsNetwork>(create: (BuildContext context) {
-          return PostsNetwork();
-        }),
-        Provider<NetWorkInfoImpl>(create: (BuildContext context) {
-          return NetWorkInfoImpl.instance;
-        }),
-      ],
+      providers: provider(),
       child: MaterialApp(
         title: 'FE Posts',
-        theme: ThemeData(
-          primarySwatch: Colors.grey,
-        ),
+        theme: lightThemeData,
         debugShowCheckedModeBanner: false,
         home: const Posts(),
         routes: <String, Widget Function(BuildContext)>{

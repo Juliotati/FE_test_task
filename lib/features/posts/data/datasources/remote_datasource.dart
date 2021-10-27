@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:fe_test_task/core/network_info.dart';
+import 'package:fe_test_task/core/core.dart';
 import 'package:fe_test_task/features/posts/data/models/post_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;

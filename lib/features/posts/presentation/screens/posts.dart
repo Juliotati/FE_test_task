@@ -28,19 +28,16 @@ class _PostsState extends State<Posts> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.grey[300],
         title: const Text('Posts'),
-        actions: [
-          InkWell(
+        actions: <PostRefreshButton>[
+          PostRefreshButton(
             onTap: () async => getPosts(),
-            child: const Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Icon(Icons.refresh),
-            ),
           ),
         ],
       ),
       body: RefreshIndicator(
+        strokeWidth: 3.0,
+        color: Colors.amber[400],
         onRefresh: () async => getPosts(),
         child: PostBuilder(
           builder: (List<PostModel>? posts) {
