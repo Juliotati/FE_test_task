@@ -20,25 +20,25 @@ class PostsNetwork extends PostRemoteDataSource with ChangeNotifier {
 
   PostState state = PostState.empty;
 
-  static const String _baseUrl = 'https://jsonplaceholder.typicode.com/posts';
+  static const String _postsAPI = 'https://jsonplaceholder.typicode.com/posts';
   @override
   Future<void> getPosts() async {
     final bool isConnected = await NetWorkInfoImpl.instance.isConnected;
 
-    // If no connection is found, no calls can be made so the method should exit
     if (!isConnected) {
       _setStateAsEmpty();
       return;
     }
     _setStateAsLoading();
     try {
-      final http.Response response = await http.get(Uri.parse(_baseUrl));
+      final http.Response response = await http.get(Uri.parse(_postsAPI));
 
       if (response.statusCode != 200) {
         _setStateAsEmpty();
         return;
       }
       final List<dynamic> decodePosts = jsonDecode(response.body);
+
       final List<PostModel> posts = decodePosts.map((dynamic post) {
         return PostModel.fromJson(post);
       }).toList();
