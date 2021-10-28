@@ -1,5 +1,5 @@
+import 'package:fe_test_task/core/config/routes/routes.gr.dart';
 import 'package:fe_test_task/core/core.dart';
-import 'package:fe_test_task/features/posts/posts.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -8,17 +8,16 @@ class FETestApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final FERouter _router = FERouter();
     return MultiProvider(
       providers: provider(),
-      child: MaterialApp(
+      child: MaterialApp.router(
         title: 'FE Posts',
         theme: lightThemeData,
         debugShowCheckedModeBanner: false,
-        home: const Posts(),
-        routes: <String, Widget Function(BuildContext)>{
-          Posts.route: (BuildContext context) => const Posts(),
-          PostDetails.route: (BuildContext context) => const PostDetails(),
-        },
+        routerDelegate: _router.delegate(),
+        routeInformationParser: _router.defaultRouteParser(),
+        routeInformationProvider: _router.routeInfoProvider(),
       ),
     );
   }

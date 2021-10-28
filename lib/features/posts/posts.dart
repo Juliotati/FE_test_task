@@ -1,5 +1,7 @@
 library posts;
 
+import 'package:auto_route/src/router/auto_router_x.dart';
+import 'package:fe_test_task/core/config/routes/routes.gr.dart';
 import 'package:fe_test_task/core/core.dart';
 import 'package:fe_test_task/features/posts/data/datasources/remote_datasource.dart';
 import 'package:fe_test_task/features/posts/data/models/post_model.dart';

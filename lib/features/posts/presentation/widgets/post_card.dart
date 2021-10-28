@@ -31,10 +31,7 @@ class PostCardDecoration extends StatelessWidget {
   final Widget child;
 
   void navigateToPostDetails(BuildContext context) {
-    Navigator.of(context).pushNamed(
-      PostDetails.route,
-      arguments: post,
-    );
+    context.pushRoute(PostDetailsRoute(post: post));
   }
 
   @override

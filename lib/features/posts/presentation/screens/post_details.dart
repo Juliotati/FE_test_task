@@ -1,13 +1,12 @@
 part of posts;
 
 class PostDetails extends StatelessWidget {
-  const PostDetails({Key? key}) : super(key: key);
+  const PostDetails({Key? key, required this.post}) : super(key: key);
   static const String route = 'post-details';
+  final PostModel post;
 
   @override
   Widget build(BuildContext context) {
-    final PostModel post =
-        ModalRoute.of(context)!.settings.arguments as PostModel;
     return Scaffold(
       backgroundColor: Colors.amber[50],
       appBar: AppBar(
