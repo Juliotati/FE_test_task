@@ -11,6 +11,7 @@ class PostCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PostCardDecoration(
+      key: ValueKey<String>('post-${post.id}'),
       post: post,
       child: Text(
         post.title,
