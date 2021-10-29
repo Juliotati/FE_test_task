@@ -5,19 +5,27 @@ class PostBuilder extends StatelessWidget {
     Key? key,
     required this.builder,
   }) : super(key: key);
-  final Widget Function(List<PostModel>?) builder;
+
+  final Widget Function(List<PostModel>) builder;
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<PostsNetwork>(
-      builder: (_, PostsNetwork postNetwork, Widget? loadingIndicator) {
-        if (postNetwork.state == PostState.loading) {
+    return Consumer<PostsProvider>(
+      builder: (_, PostsProvider postsProvider, Widget? loadingIndicator) {
+        if (postsProvider.state == PostState.loading) {
           return loadingIndicator!;
         }
-        if (postNetwork.state == PostState.empty) {
+        if (postsProvider.state == PostState.loaded &&
+            postsProvider.data!.isEmpty) {
+          return const Center(child: Text('No Posts Available'));
+        }
+        if (postsProvider.hasError || postsProvider.data == null) {
+          return const Center(child: Text(' not get posts'));
+        }
+        if (postsProvider.state == PostState.empty) {
           return const Center(child: Text('No Posts Available'));
         } else {
-          return builder(postNetwork.data);
+          return builder(postsProvider.data!);
         }
       },
       child: const Center(

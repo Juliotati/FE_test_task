@@ -25,6 +25,9 @@ dependencies:
 
   json_annotation: ^4.3.0
 
+  moor: ^4.5.0
+  moor_flutter: ^4.0.0
+
   path: ^1.8.0
   path_provider: ^2.0.5
   provider: ^6.0.1
@@ -40,6 +43,7 @@ dev_dependencies:
   json_serializable: ^6.0.1
 
   mocktail: ^0.1.4
+  moor_generator: ^4.3.2
 
 flutter:
   uses-material-design: true

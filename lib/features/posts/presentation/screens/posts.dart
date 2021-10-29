@@ -10,12 +10,7 @@ class Posts extends StatefulWidget {
 
 class _PostsState extends State<Posts> {
   Future<void> getPosts() async {
-    final bool isConnected = await NetWorkInfoImpl.instance.isConnected;
-    if (isConnected) {
-      context.read<PostsNetwork>().getPosts();
-      return;
-    }
-    context.read<NetWorkInfoImpl>().noConnectionWarning(context);
+    context.read<PostsProvider>().getPosts(context);
   }
 
   @override
@@ -40,9 +35,9 @@ class _PostsState extends State<Posts> {
         color: Colors.amber[400],
         onRefresh: () async => getPosts(),
         child: PostBuilder(
-          builder: (List<PostModel>? posts) {
+          builder: (List<PostModel> posts) {
             return ListView.builder(
-              itemCount: posts!.length,
+              itemCount: posts.length,
               itemBuilder: (_, int i) {
                 final PostModel post = posts[i];
                 return PostCard(

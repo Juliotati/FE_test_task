@@ -23,6 +23,17 @@ class NetWorkInfoImpl implements NetworkInfo {
     return;
   }
 
+  Future<void> loadingFromCache(BuildContext context) async {
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: const Text('Loading Post from cache'),
+        backgroundColor: Colors.green[400],
+      ),
+    );
+    return;
+  }
+
   Future<bool> _isConnected() async {
     if (await _hasNoNetwork()) return false;
     if (await _hasNetwork()) return true;

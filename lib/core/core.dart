@@ -1,5 +1,9 @@
 library core;
 
+import 'package:fe_test_task/features/posts/data/datasources/local_datasource.dart';
+import 'package:fe_test_task/features/posts/posts.dart';
+import 'package:fe_test_task/moor/moor_posts.dart';
+import 'package:fe_test_task/moor/posts_dao.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:animations/animations.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
